@@ -117,12 +117,12 @@
 class Car {
     // Write code under this line
    
-     constructor(speed = 0 , price, maxSpeed, isOn = false, distance = 0){
-        this.maxSpeed = maxSpeed;
-        this.speed = speed;
-         this._price = price;
-         this.isOn = isOn;
-         this.distance = distance;
+     constructor(obj){
+        this.maxSpeed = obj.maxSpeed;
+        this.speed = 0;
+         this._price = obj.price;
+         this.isOn = false;
+         this.distance = 0;
 
      }
      static getSpecs(Car){
@@ -142,7 +142,7 @@ class Car {
          this.speed = 0;
      }
      accelerate(value) {
-         if (this.maxSpeed <= (this.speed + value)){
+         if (this.maxSpeed >= (this.speed + value)){
              this.speed += value;
          }else{
              this.speed = this.maxSpeed;
@@ -157,15 +157,12 @@ class Car {
      }
      drive(hours) {
          if (this.isOn) {
-             this.distance = this.distance * hours;
+             this.distance =this.distance + this.speed * hours;
          }
      }
    }
     
    const mustang = new Car({ maxSpeed: 200, price: 2000 });
-   console.log (mustang.maxSpeed);
-   console.log (mustang.price)
-   console.log(mustang.speed)
    mustang.turnOn();
    mustang.accelerate(50);
    mustang.drive(2);
