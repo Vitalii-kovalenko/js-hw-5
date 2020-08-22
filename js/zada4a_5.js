@@ -1,42 +1,148 @@
-// Задача 3-5
-// Оператор in и метод push
-// Напиши функцию getAllPropValues(arr, prop), которая получает массив объектов и имя свойства.
+// Задача 5-5
+// класс
+// Напиши класс Car с указанными свойствами и методами.
 
-// Функция возвращает массив значений определенного свойства prop из каждого объекта в массиве.
+// class Car {
+//   /*
+//    * Добавь `статический` метод 
+//    * `getSpecs(car)`, который принимает 
+//    * объект-машину как параметр 
+//    * и возвращает шаблонную строку 
+//    * со свойствами и значениями объекта.
+//    * Свойства: 
+//    *   maxSpeed, 
+//    *   speed, 
+//    *   isOn, 
+//    *   distance,
+//    *   price
+//    * Пример строки, полученной этим методом:
+//    * 'maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000'
+//    */
 
-// Используй метод push для добавления значения в массив и оператор in для проверки наличия свойства в объекте.
+//   /*
+//    * Конструктор получает объект настроек.
+//    *
+//    * Добавь свойства будущеего экземпляра класса:
+//    *  speed - текущая скорость, 
+//    *          начальное значение `0`
+//    *  price - цена автомобиля
+//    *  maxSpeed - максимальная скорость
+//    *  isOn - заведен ли автомобиль. 
+//    *         Значения `true` или `false`,  
+//    *         начальное значение false
+//    *  distance - пробег в километрах, 
+//    *             начальное значение `0`
+//    */
+//   constructor() {}
 
-function getAllPropValues (array, prop) {
-    'use strict';
-    // Write code under this line 
-    const values = [];
-    for (const item of array){
-        let value = item[prop];
-        if (prop in item){
-            values.push(value);
-        }
-    }
-    return values;
-  }
+//   /*
+//    * Добавь геттер и сеттер 
+//    * для свойства `price`, который будет 
+//    * работать с свойством цены автомобиля.
+//    * 
+//    * ВАЖНО: для записи методов get и set
+//    * значение параметра записывают с 
+//    * подчеркиванием. См. ниже пример 1.
+//    */
 
-//  
-  // Объекты и ожидаемый результат
-  const products = [
-      { name: 'Радар', price: 1300, quantity: 4 },
-      { name: 'Радар', price: 1280, quantity: 2 },
-      { name: 'Радар', price: 1320, quantity: 1 },
-      { name: 'Сканер', price: 2700, quantity: 1 },
-      { name: 'Сканер', price: 2500, quantity: 3 },
-      { name: 'Дроид', price: 400, quantity: 7 },
-      { name: 'Захват', price: 1200, quantity: 2 },
-  ]; 
-  
-  console.log(getAllPropValues(products, 'name'));
-  // ['Радар', 'Радар', 'Радар', 'Сканер', 'Сканер', 'Дроид', 'Захват']
-  
-  console.log(getAllPropValues(products, 'quantity'));
-  // [4, 2, 1, 1, 3, 7, 2]
-  
-  console.log(getAllPropValues(products, 'category'));
-  //  []
-  
+//   /*
+//    * Метод, который заводит автомобиль
+//    * Записывает в свойство `isOn` значение `true`
+//    */
+//   turnOn() {}
+
+//   /*
+//    * Метод, чтобы заглушить автомобиль
+//    * Этот метод должен записывать 
+//    * в свойство isOn значение false,
+//    * и сбрасывать текущую скорость до 0
+//    */
+//   turnOff() {}
+
+//   /*
+//    * Этот метод должен добавлять 
+//    * к свойству `speed` полученное
+//    * значение, при условии, 
+//    * что результирующая скорость
+//    * не больше чем значение свойства `maxSpeed`
+//    */
+//   accelerate(value) {}
+
+//   /*
+//    * Этот метод должен отнимать 
+//    * от свойства `speed` 
+//    * полученное значение, при условии, 
+//    * что результирующая скорость не меньше 0
+//    */
+
+//   decelerate(value) {}
+
+//   /*
+//    * Этот метод должен добавлять к свойству 
+//    * `distance` пробег в километрах, 
+//    * т.е. hours * speed,
+//    * но только в том случае, 
+//    * если машина заведена!
+//    */
+//   drive(hours) {}
+// }
+
+// #### Пример 1.
+
+// ```js
+// class Guest {
+//   // Собственные свойства класса размещаем в конструкторе
+//   constructor(name, roomNumber) {
+//     /* параметр name не должен 
+//      *   совпадать с названием свойства
+//      *   но должен быть похож.
+//      *   Поэтому используют прием смены
+//      *   названия добавляя символ '_'.
+//      *   Хотя это может любой другой символ
+//      */
+//     this._name = name;
+//   }
+
+//   // Используем геттеры и сеттеры для описания интерфейса доступа к свойствам
+//   get name() {
+//     return this._name;
+//   }
+
+//   set name(value) {
+//     this._name = value;
+//   }
+// }
+
+
+class Car {
+    // Write code under this line
+     getSpecs(){}
+     constructor(){}
+     get price() {}
+     set price(value) {}
+     turnOn() {}
+     turnOff() {}
+     accelerate(value) {}
+     decelerate(value) {}
+     drive(hours) {}
+   }
+    
+   const mustang = new Car({ maxSpeed: 200, price: 2000 });
+   mustang.turnOn();
+   mustang.accelerate(50);
+   mustang.drive(2);
+   
+   // console.log(Car.getSpecs(mustang));
+   // 'maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000'
+   
+   mustang.decelerate(20);
+   mustang.drive(1);
+   mustang.turnOff();
+   
+   // console.log(Car.getSpecs(mustang));
+   // 'maxSpeed: 200, speed: 0, isOn: false, distance: 130, price: 2000'
+   
+   // console.log(mustang.price); // 2000
+   mustang.price = 4000;
+   // console.log(mustang.price); // 4000
+   

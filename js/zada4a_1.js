@@ -1,46 +1,28 @@
-// CRUD для свойств объекта
-// С - create (создать)
-// R - read (читать)
-// U - update (обновить)
-// D - delete (удалить)
-// Напиши скрипт, который, для объекта user, последовательно:
+// Задача 5-1
+// function-constructor
+// Напиши функцию-конструктор Account, которая создает объект со свойствами login и email.
 
-// добавляет поле 'mood' со значением 'happy'
-// добавляет поле 'full time' со значением true
-// заменяет значение 'hobby' на 'skydiving'
-// заменяет значение 'premium' на false
-// в переменную message записывает содержимое объекта user:
-// для переменной keys присваивает массив свойств объекта, используя метод Object.keys()
-// с помощью оператора for...of
-// в формате ключ:значение
-// c переносом строки ('\n')
+// В prototype функции-конструктора добавь метод getInfo(), который возвращает строку со значениями свойств login и email объекта.
 
-let message = '';
-const user = {
-  age: 20,
-  hobby: 'html',
-  name: 'Mango',
-  premium: true,
-};
- 
-//Write code under this line  
-user.mood = 'happy';
-user["full time"] = true;
-user.hobby = 'skydiving';
-user.premium = false;
- 
-const keys = Object.keys(user);
-// Write code under this line
-for (const key of keys) {
-    message += ` ${key}: ${user[key]}\n`;
+ // Write code under this line
+  const Account = function (login, email){
+    this.login = login;
+    this.email = email;
+
+    
+
   }
- 
-console.log(message); 
-/*
-'age : 20 
-hobby : skydiving 
-name : Mango 
-premium : false 
-mood : happy 
-"full time" : true 
-' */
+
+  Account.prototype.getInfo = function(){
+    return (`login : ${this.login}, email: ${this.email}`)
+  }
+console.log(typeof Account.prototype.getInfo);
+// 'function'
+
+const mango = new Account( 'Mangozedog', 'mango@dog.woof');
+console.log(mango.getInfo()); 
+// 'login : Mangozedog, email: mango@dog.woof'
+
+const poly = new Account( 'Poly', 'poly@mail.com');
+console.log(poly.getInfo());
+// 'login : Poly, email: poly@mail.com'

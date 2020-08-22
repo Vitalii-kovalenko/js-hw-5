@@ -1,53 +1,74 @@
-// Поиск наибольшего значения среди свойств объекта
-// Напиши функцию findBestEmployee(employees), которая принимает объект сотрудников и возвращает имя самого продуктивного (который выполнил больше всех задач). 
-// Сотрудники и кол-во выполненных задач содержатся как свойства объекта в формате "имя":"кол-во задач".
+// Задача 5-3
+// использование методов класса
+// Напиши класс Storage, который будет создавать объекты для управления складом товаров. При вызове будет получать один аргумент - начальный массив товаров, и записывать его в свойство items.
 
-const findBestEmployee = function (employees) {
-    'use strict';
-    // Write code under this line
-    let entries = Object.entries(employees);
-    let maxRating = 0;
-    let bestDevelover = '';
-    for (const [name, rating] of entries){
-        if (rating > maxRating) {
-            maxRating = rating;
-            bestDevelover = name;
-        }
+// Добавь методы класса:
 
+// getItems() - возвращает массив текущих товаров
+// addItem(item) - получает новый товар и добавляет его к текущим
+// removeItem(item) - получает товар и, если он есть, удаляет его из текущих
+
+
+  // Write code under this line
+  class Storage{
+    constructor(items) {
+      this.items = items;
     }
-    return bestDevelover;
 
-  };
-  
-  // Объекты и ожидаемый результат
+    getItems(){
+      return this.items;
+    }
 
-  
-  const qwe = {}
-  console.log(findBestEmployee(qwe)); 
+    addItem(item){
+       this.items.push(item) ;
+    }
 
+    removeItem(item){
+          for (let i = this.items.length - 1; i >= 0; i -= 1){
+                  if (item === this.items[i]){
+                    this.items.splice(i, 1);
+                  }  
+        }
+    }
 
-  const developers = {
-    ann: 29,
-    david: 35,
-    helen: 1,
-    lorence: 99,
-  }; 
-  console.log(findBestEmployee(developers)); 
-  // 'lorence'
-  
-  const supports = {
-    poly: 12,
-    mango: 17,
-    ajax: 4,
-  }; 
-  console.log(findBestEmployee(supports)); 
-  // 'mango'
-  
-  const sellers = {
-    lux: 147,
-    david: 21,
-    kiwi: 19,
-    chelsy: 38,
   }
-  console.log(findBestEmployee(sellers)); 
-  // 'lux'  
+
+console.log(typeof Storage);
+// 'function'
+
+const goods = [
+  'Нанитоиды',
+  'Пролонгер',
+  'Железные жупи',
+  'Антигравитатор'
+];
+
+const storage = new Storage(goods);
+
+console.log(storage.getItems());
+/* [
+  'Нанитоиды',
+  'Пролонгер',
+  'Железные жупи',
+  'Антигравитатор'
+] */
+
+storage.addItem('Дроид');
+console.log(storage.getItems());
+/* [
+  'Нанитоиды',
+  'Пролонгер',
+  'Железные жупи',
+  'Антигравитатор',
+  'Дроид'
+] */
+
+storage.removeItem('Пролонгер');
+console.log(storage.getItems());
+/* [
+  'Нанитоиды',
+  'Железные жупи',
+  'Антигравитатор',
+  'Дроид'
+] */
+

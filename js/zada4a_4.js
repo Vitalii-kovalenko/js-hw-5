@@ -1,34 +1,50 @@
-// Задача 3-4
-// Суммирование значений свойств объекта
-// Напиши функцию countTotalSalary(employees) принимающую объект зарплат. Функция считает общую сумму зарплаты работников и возвращает ее. Каждое поле объекта, передаваемого в функцию,
-//  имеет вид "имя":"зарплата".
+// Задача 5-4
+// переиспользование методов класса
+// Напиши класс StringBuilder. На вход он получает один параметр - строку, которую записывает в свойство _value.
 
-const countTotalSalary = function(employees) {
-    'use strict';
-    // Write code under this line
-        let total = 0;
-        const allSalary = Object.values(employees);
-        for ( const salary of allSalary){
-            total += salary;
-        
-        }
-        return total;
-  };
-  
-  // Объекты и ожидаемый результат
-  const developers = {
-      mango: 300,
-      poly: 250,
-      alfred: 450,
-  };
-  console.log(countTotalSalary(developers));
-  // 1000
-  
-  const supports = {
-    kiwi: 200,
-    lux: 150,
-    chelsy: 150,
+// Добавь классу следующий функционал:
+
+// Геттер value - возвращает текущее значение поля _value
+// Метод append(str) - получает параметр str (строку) и добавляет ее в конец _value
+// Метод prepend(str) - получает параметр str (строку) и добавляет ее в начало value
+// Метод pad(str) - получает параметр str (строку) и добавляет ее в начало и в конец _value
+// Метод pad должен использовать методы append и prepend
+
+
+ // Write code under this line
+  class StringBuilder{
+      constructor(_value){
+        this.value = _value;
+      }
+
+      append(str){
+          this.value = this.value + str;
+      }
+
+      prepend(str){
+            this.value = str + this.value;
+      }
+
+      pad(str){
+         this.append(str);
+         this.prepend(str);
+
+      }
+
+
   }
-  console.log(countTotalSalary(supports));
-  // 500
-  
+
+console.log(typeof StringBuilder);
+// 'function'
+
+
+const builder = new StringBuilder('.');
+
+builder.append('^');
+console.log(builder.value); // '.^'
+
+builder.prepend('^');
+console.log(builder.value); // '^.^'
+
+builder.pad('=');
+console.log(builder.value); // '=^.^='
